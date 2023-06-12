@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(2);
+const book = getBook(1);
 
 // const title = book.title;
 // const author = book.author;
@@ -159,7 +159,37 @@ const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
 
 // Array destructuring
 
-const primaryGenre = genres[0];
-const secondaryGenre = genres[1];
+// const primaryGenre = genres[0];
+// const secondaryGenre = genres[1];
 
-console.log(primaryGenre, secondaryGenre);
+// console.log(primaryGenre, secondaryGenre);
+
+// Rest/Spread Operator
+
+// Rest operator:
+// To pull out the rest of the Genres from the array into one array
+
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+
+console.log(primaryGenre, secondaryGenre, otherGenres);
+
+// Spread Operator:
+
+// Spread operator is more common and is used more, can be used on both objects and arrays.
+
+// Not this:
+// const newGenres = [genres, "epic fantasy"]
+// returns an array of genres within the array as an element,  and then 'epic fantasy' as an element
+
+// This:
+const newGenres = [...genres, "epic fantasy"];
+// returns one array, can also put spread operator at the end to be rest operator
+
+// For objects, allows us to add new properties and to update current properties ie change properties. To update properties, spread operator must be first because it takes the old object properties and has them inside a new property which can be updated, as long as spread is first.
+
+const updatedBook = {
+  ...book,
+  moviePublicationDate: "2001-12-19",
+  pages: 1210,
+};
+updatedBook;
