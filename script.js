@@ -198,5 +198,10 @@ updatedBook;
 const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${
   publicationDate.split("-")[0]
 }.
-}.`;
+}. The book has ${hasMovieAdaptation ? "" : "not"}been dapted as a movie`;
 summary;
+
+// Ternary operators instead of if/else statements
+const pagesRange = pages > 1000 ? "over a thousand" : "less than 1000.";
+pagesRange;
+console.log(`The book has ${pagesRange} pages`);
