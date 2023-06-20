@@ -305,3 +305,20 @@ const essentialData1 = books.map((book) => ({
   author: book.author,
 }));
 essentialData1;
+
+// .filter()
+// returns array based on a boolean condition you give
+
+// Create an array of books that have > 500 pages.
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation); // could just put && above to include both conditions as filters
+longBooks;
+
+// Create an array that takes(filters) all adventure books
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map((book) => book.title); //.includes() is a builtin array method that give a boolean
+adventureBooks;
