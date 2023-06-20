@@ -248,3 +248,26 @@ countWrong; // it gives no data for this variable which is not correct because o
 // It returns first value when it is either null or undefined(not 0 or empty string '')
 const count = book.reviews.librarything.reviewsCount ?? "no data";
 count; // returns zero
+
+// Optional chaining
+// To get total review count of a certain book in our array of objects
+// If something comes back as undefined(if you are looking for something which doesn't exist) you will get error, so use ? to ask if it exists, and if it does it will return
+
+// function getTotalReviewCount(book) {
+//   const goodreads = book.reviews.goodreads.reviewsCount;
+//   const librarything = book.reviews.librarything.reviewsCount;
+//   return goodreads + librarything;
+// }
+// depending on the above book we chose we could get undefined
+// console.log(getTotalReviewCount(book));
+
+// So here we use the optional chaining to prevent error, we will get NaN instead, but in React that is better than error which breaks your whole application. Then to fix the NaN, we can use the nullish coalescing operator at the end to let it equal 0, so we can get the other review count plus 0.
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  librarything; // could return undefined based on the book
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
