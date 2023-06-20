@@ -322,3 +322,16 @@ const adventureBooks = books
   .filter((books) => books.genres.includes("adventure"))
   .map((book) => book.title); //.includes() is a builtin array method that give a boolean
 adventureBooks;
+
+// .reduce()
+// The .reduce() method is the most powerful and most used method in all of JS
+
+// Let's get all the books page amounts and add them all together to know how many pages we will have to read.
+// We will take the 'pages' properties and add them
+// It takes a callback function like the others, but then for 2nd arg it takes a starting value
+// It is called "reduce" because it takes the whole array and tries to boil it down to one value i.e. reduce it to one value
+
+// We take an accumulator and keep adding our pages to it, see below.
+// Look this up in JS course for more details and use cases
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pagesAllBooks;
