@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 // Destructuring
-
+/*
 const book = getBook(2);
 
 // const title = book.title;
@@ -271,3 +271,37 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(book));
+
+*/
+
+// The Array methods: Map, Filter, Reduce, Sort
+
+// These methods don't mutate the original array, instead they return a new array based on the original array.
+
+// .Map()
+// Loops over original array, returns array of same size and applies some operation to all elements of the original array.
+
+const books = getBooks();
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+// We will create an array that has only the titles of the books:
+const titles = books.map((book) => book.title);
+titles;
+
+// We want to get just the title and the author of the data, but have it returned in same format of array of objects:
+const essentialData = books.map((book) => {
+  return {
+    // must use return keyword here so JS recognizes the object{}
+    title: book.title,
+    author: book.author,
+  };
+});
+essentialData;
+// You could write the same code above, but without return keyword by replacing it with () like this ({}) and get rid of opening and closing braces.
+const essentialData1 = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+}));
+essentialData1;
