@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(1);
+const book = getBook(2);
 
 // const title = book.title;
 // const author = book.author;
@@ -218,3 +218,33 @@ console.log(`The book has ${pagesRange} pages`);
 const getYear = (str) => str.split("-")[0];
 
 console.log(getYear(publicationDate));
+
+// Short-circuiting and Logical Operators &&, ||, ??
+
+// && operator returns 2nd operand if first is True
+console.log(true && "some string"); //returns:  some string
+// && operator short-circuits i.e. returns 1st operand if first is False
+console.log(false && "some string"); // returns: false
+
+// This also works with truthy and falsy values the same:
+// falsey values: 0, '', null, NaN, undefined
+
+// || operator short-circuits when first operand is True,
+console.log(true || "some string"); // returns: true
+// || operator returns true value, so if 1st is false it returns second operand
+console.log(false || "some string"); //returns: some string
+
+// Example
+console.log(book.translations.spanish);
+const spanishTranslation = book.translations.spanish || "Not translated.";
+spanishTranslation; // it short-circuits and gives the 1st value which is the name of a spanish book
+
+// Here is a case where it can give you the opposite of what you want:
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong; // it gives no data for this variable which is not correct because our first value is a just a null i.e. a falsey value.
+
+// To get past this issue, we use the nullish coalescing operator ?? to work with null values when you want to return a 0 and not 'no data'
+// It returns first value when it is either null or undefined(not 0 or empty string '')
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count; // returns zero
