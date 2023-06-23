@@ -351,3 +351,33 @@ y;
 
 const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
 sortedByPages;
+
+// Working with immutable arrays
+// How to add, update, and delete elements without mutating the array
+
+// 1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J.K. Rowling",
+};
+
+// We use spread operator to pull out our books from the array and then add the new object:
+
+// 1) To Add book object to array without changing the original array
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// Normally we would abstract this away by creating a function that does this, instead of creating a new array each time.
+
+//  2) To delete book object from array
+// If we want to delete the book with id 3, we just use .filter() to filter out all the other books into our array. Below it says filter all books that are different from book with id 3.
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+// 3) Update book object in the array
+// We use .map() and a ternary operator to update(select by a property in this case id === 1), we use spread operator to take all the older properties and then we can update the property, for after the : just return the book unchanged.
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+booksAfterUpdate;
