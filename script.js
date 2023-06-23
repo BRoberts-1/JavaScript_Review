@@ -281,6 +281,7 @@ console.log(getTotalReviewCount(book));
 // .Map()
 // Loops over original array, returns array of same size and applies some operation to all elements of the original array.
 
+/*
 const books = getBooks();
 
 const x = [1, 2, 3, 4, 5].map((el) => el * 2);
@@ -381,3 +382,24 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
   book.id === 1 ? { ...book, pages: 1210 } : book
 );
 booksAfterUpdate;
+
+*/
+
+// Asynchronous JavaScript techniques to load date from an API
+
+// First using promises
+
+// Fetching data takes some amount of time i.e. delay(request, wait, download data from server)
+
+// How to set this up so that as we wait we set something up to occur as soon as data has arrived?
+
+// It returns a promise. On the promise we call the .then() method which will be called as soon as the promise is fulfilled. We pass in callback function to .then() which will act on data as soon as it arrives. We must convert data from JSON to a JS object. We use .json() to convert it. .json() returns another promise, more asynchrony, so we add another callback function here as well.
+
+// So in summary, JS makes a request for data with .fetch(), it moves on to other code in synchronous order, then when data arrives executes the callback function from the response received i.e. the data.
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+
+console.log("Binyamin");
+data;
