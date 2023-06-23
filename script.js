@@ -335,3 +335,19 @@ adventureBooks;
 // Look this up in JS course for more details and use cases
 const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
 pagesAllBooks;
+
+// .sort()
+// pass in function with 2 args, usually a and b, to sort ascending do a - b, then it sorts numbers. It loops and a and b are current value and the next value. So 3 - 7 = -4, sum is negative it goes 1st, if it comes out positive it goes after for ascending. If you want desecending then write b - a.
+
+// .sort() mutates original array, it does not create a new copy, so first you can make a copy using .slice() and then sort it .sort()
+
+const y = [3, 7, 1, 9, 6];
+const sorted = y.slice().sort((a, b) => a - b);
+sorted;
+y;
+
+// Usually we have to sort an array of objects and not just a simple array.
+// So to sort our books objects:
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
