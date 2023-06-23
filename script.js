@@ -397,9 +397,24 @@ booksAfterUpdate;
 
 // So in summary, JS makes a request for data with .fetch(), it moves on to other code in synchronous order, then when data arrives executes the callback function from the response received i.e. the data.
 
-fetch("https://jsonplaceholder.typicode.com/todos")
-  .then((res) => res.json())
-  .then((data) => console.log(data));
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+// console.log("Binyamin");
+// data;
+
+// The above way uses promises, but we can write it more cleanly with async/await keywords instead of the .then(). Create function using async keyword, use await keyword with .fetch() and store in variable res. Use await with res.json() and store into variable data. Then do what you want with the data.
+
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+}
+
+getTodos();
 
 console.log("Binyamin");
-data;
+
+// Usually with React we will just set the state once data is received.
+// Important to know async function just returns a promise.
